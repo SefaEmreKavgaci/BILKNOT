@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.semrekavgaci.bilknot.R;
 
 public class LoginPage extends AppCompatActivity {
 
