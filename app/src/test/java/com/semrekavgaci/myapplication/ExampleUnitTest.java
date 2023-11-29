@@ -1,4 +1,4 @@
-package com.semrekavgaci.bilknot;
+package com.semrekavgaci.myapplication;
 
 import org.junit.Test;
 

@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "BILKNOT"
+rootProject.name = "My Application"
 include(":app")
