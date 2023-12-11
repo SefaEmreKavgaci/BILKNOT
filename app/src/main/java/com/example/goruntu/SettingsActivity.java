@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.semrekavgaci.myapplication.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

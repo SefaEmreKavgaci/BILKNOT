@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.semrekavgaci.myapplication.R;
+
 public class MyNotesActivity extends AppCompatActivity {
 
     @Override
