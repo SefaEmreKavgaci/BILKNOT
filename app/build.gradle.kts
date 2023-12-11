@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.semrekavgaci.myapplication"
+    namespace = "com.example.goruntu"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.semrekavgaci.myapplication"
+        applicationId = "com.example.goruntu"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -24,6 +24,9 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+    buildFeatures{
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

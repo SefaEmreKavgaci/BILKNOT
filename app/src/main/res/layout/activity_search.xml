@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/searchColor"
+    tools:context=".SearchActivity">
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightBlue"
+        app:itemIconTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <TextView
+        android:id="@+id/tumEkran"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/morBoyama"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#be9af5"
+        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
+        app:layout_constraintEnd_toStartOf="@+id/viewVertical"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/viewHorizontalSoldaki"
+        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+    <View
+        android:id="@+id/viewHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/tumEkran"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tumEkran"
+        app:layout_constraintVertical_bias="0.308" />
+
+    <View
+        android:id="@+id/viewHorizontalSoldaki"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginEnd="239dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
+        app:layout_constraintEnd_toEndOf="@+id/tumEkran"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tumEkran"
+        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
+        app:layout_constraintVertical_bias="0.525" />
+
+    <View
+        android:id="@+id/viewVertical"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
+        app:layout_constraintEnd_toEndOf="@+id/viewHorizontal"
+        app:layout_constraintHorizontal_bias="0.821"
+        app:layout_constraintStart_toStartOf="@+id/viewHorizontal"
+        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/ustAcikMavi"
+        android:layout_width="413dp"
+        android:layout_height="135dp"
+        android:background="#82f5ef"
+        android:padding="10dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/tumEkran"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tumEkran"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/bilknotYazisi"
+        android:layout_width="317dp"
+        android:layout_height="58dp"
+        android:background="#313bf5"
+        android:paddingStart="100dp"
+        android:paddingTop="10dp"
+        android:text="BILKNOT"
+        android:textColor="#fcfcfc"
+        android:textSize="30sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tumEkran"
+        app:layout_constraintEnd_toEndOf="@+id/ustAcikMavi"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/ustAcikMavi"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <ImageView
+        android:id="@+id/profilePhoto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/viewVertical"
+        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
+        app:layout_constraintVertical_bias="0.0"
+        tools:src="@tools:sample/avatars" />
+
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="#fcf881"
+        android:contentDescription="Return button"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
+        app:layout_constraintEnd_toStartOf="@+id/viewHorizontalSoldaki"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/searchLogo"
+        android:layout_width="54dp"
+        android:layout_height="46dp"
+        android:src="@drawable/baseline_saved_search_24"
+        app:layout_constraintBottom_toTopOf="@+id/searchNote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.019"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintVertical_bias="0.608" />
+
+    <EditText
+        android:id="@+id/searchNote"
+        android:layout_width="244dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Search note"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="@+id/tumEkran"
+        app:layout_constraintTop_toBottomOf="@+id/morBoyama"
+        app:layout_constraintVertical_bias="0.183" />
+
+    <ImageButton
+        android:id="@+id/crossButton"
+        android:layout_width="48dp"
+        android:layout_height="49dp"
+        android:background="@color/searchColor"
+        android:contentDescription="Cross button"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+
+        app:layout_constraintEnd_toStartOf="@+id/searchButton"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toEndOf="@+id/searchNote"
+        app:layout_constraintTop_toBottomOf="@+id/viewVertical"
+        app:layout_constraintVertical_bias="0.183"
+        app:srcCompat="@drawable/outline_cancel_presentation_24" />
+
+    <ImageButton
+        android:id="@+id/searchButton"
+        android:layout_width="48dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/searchColor"
+        android:contentDescription="Search button"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/searchNote"
+        app:layout_constraintTop_toBottomOf="@+id/profilePhoto"
+        app:layout_constraintVertical_bias="0.183"
+        app:srcCompat="@drawable/baseline_arrow_circle_right_24" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort by date"
+        android:backgroundTint="#19d408"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchNote"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort by likes"
+        android:backgroundTint="#19d408"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="@+id/tumEkran"
+        app:layout_constraintTop_toBottomOf="@+id/searchNote"
+        app:layout_constraintVertical_bias="0.08" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

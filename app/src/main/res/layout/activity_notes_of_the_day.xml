@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/personColor"
+    tools:context=".NotesOfTheDayActivity">
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightBlue"
+        app:itemIconTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <TextView
+        android:id="@+id/tumEkran"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/morBoyama"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#be9af5"
+        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
+        app:layout_constraintEnd_toStartOf="@+id/viewVertical"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/viewHorizontalSoldaki"
+        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+    <View
+        android:id="@+id/viewHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/tumEkran"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tumEkran"
+        app:layout_constraintVertical_bias="0.308" />
+
+    <View
+        android:id="@+id/viewHorizontalSoldaki"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginEnd="239dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
+        app:layout_constraintEnd_toEndOf="@+id/tumEkran"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tumEkran"
+        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
+        app:layout_constraintVertical_bias="0.525" />
+
+    <View
+        android:id="@+id/viewVertical"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
+        app:layout_constraintEnd_toEndOf="@+id/viewHorizontal"
+        app:layout_constraintHorizontal_bias="0.821"
+        app:layout_constraintStart_toStartOf="@+id/viewHorizontal"
+        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/ustAcikMavi"
+        android:layout_width="413dp"
+        android:layout_height="135dp"
+        android:background="#82f5ef"
+        android:padding="10dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/tumEkran"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tumEkran"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/bilknotYazisi"
+        android:layout_width="317dp"
+        android:layout_height="58dp"
+        android:background="#313bf5"
+        android:paddingStart="100dp"
+        android:paddingTop="10dp"
+        android:text="BILKNOT"
+        android:textColor="#fcfcfc"
+        android:textSize="30sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tumEkran"
+        app:layout_constraintEnd_toEndOf="@+id/ustAcikMavi"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/ustAcikMavi"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <ImageView
+        android:id="@+id/profilePhoto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/viewVertical"
+        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
+        app:layout_constraintVertical_bias="0.0"
+        tools:src="@tools:sample/avatars" />
+
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="#fcf881"
+        android:contentDescription="Return button"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
+        app:layout_constraintEnd_toStartOf="@+id/viewHorizontalSoldaki"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/dateView"
+        android:layout_width="222dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        android:hint="(Date burda cikacak)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewHorizontalSoldaki"
+        app:layout_constraintVertical_bias="0.11" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="357dp"
+        android:layout_height="244dp"
+        android:background="@color/settingsColor"
+        android:hint="You can write your plans here."
+        android:paddingLeft="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateView"
+        app:layout_constraintVertical_bias="0.219" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

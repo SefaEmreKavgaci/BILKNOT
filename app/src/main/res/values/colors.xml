@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="lightBlue">#FFAFEEEE</color>
+    <color name="homeColor">#6495ED</color>
+    <color name="searchColor">#FFE4C4</color>
+    <color name="personColor">#E0FFFF</color>
+    <color name="settingsColor">#FFF8DC</color>
 </resources>

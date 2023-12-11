@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d1d2eb"
+    tools:context=".LogInActivity">
+
+    <TextView
+        android:id="@+id/ContainerWhite"
+        android:layout_width="371dp"
+        android:layout_height="373dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/custom_edittext"
+        android:backgroundTint="#ffffff"
+        android:text=""
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="304dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_edittext"
+        android:backgroundTint="#cfcfe3"
+        android:drawableLeft="@drawable/baseline_person_24"
+        android:drawablePadding="8dp"
+        android:hint="Email"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/ContainerWhite"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/ContainerWhite"
+        app:layout_constraintTop_toTopOf="@+id/ContainerWhite" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="307dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_edittext"
+        android:backgroundTint="#cfcfe3"
+        android:drawableLeft="@drawable/baseline_lock_24"
+        android:drawablePadding="8dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="@+id/ContainerWhite"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="@+id/ContainerWhite"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="304dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="108dp"
+        android:backgroundTint="#db0202"
+        android:text="Login"
+        android:textSize="18sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ContainerWhite"
+        app:layout_constraintEnd_toEndOf="@+id/ContainerWhite"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="@+id/ContainerWhite" />
+
+    <TextView
+        android:id="@+id/signupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="92dp"
+        android:padding="8dp"
+        android:text="Create an account"
+        android:textAlignment="center"
+        android:textColor="#2734f2"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ContainerWhite"
+        app:layout_constraintEnd_toEndOf="@+id/ContainerWhite"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintVertical_bias="0.531" />
+
+    <TextView
+        android:id="@+id/DoNotHaveAnAccount"
+        android:layout_width="121dp"
+        android:layout_height="28dp"
+        android:padding="8dp"
+        android:text="Do not have an account?"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ContainerWhite"
+        app:layout_constraintEnd_toStartOf="@+id/signupText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/ContainerWhite"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <TextView
+        android:id="@+id/forgetPasswordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:padding="8dp"
+        android:text="Forgot Password? "
+        android:textAlignment="center"
+        android:textColor="#2734f2"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="@+id/ContainerWhite"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <TextView
+        android:id="@+id/RememberMeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Remember me! "
+        android:textAlignment="center"
+        android:textColor="#2734f2"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toStartOf="@+id/forgetPasswordText"
+        app:layout_constraintHorizontal_bias="0.271"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <ImageView
+        android:id="@+id/BilkentLogo"
+        android:layout_width="169dp"
+        android:layout_height="167dp"
+        app:layout_constraintBottom_toTopOf="@+id/ContainerWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.136"
+        app:srcCompat="@drawable/bilkent3" />
+
+    <TextView
+        android:id="@+id/BILKO"
+        android:layout_width="245dp"
+        android:layout_height="79dp"
+        android:text="BİLKNOT"
+        android:textColor="#db0202"
+        android:textSize="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/ContainerWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BilkentLogo"
+        app:layout_constraintVertical_bias="0.4" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
