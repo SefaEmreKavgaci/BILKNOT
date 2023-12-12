@@ -48,7 +48,7 @@
         app:layout_constraintTop_toTopOf="@+id/BluePlace" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/emailText"
         android:layout_width="314dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"
@@ -76,13 +76,13 @@
         android:padding="8dp"
         android:textColor="@color/black"
         android:textColorHighlight="@color/cardview_dark_background"
-        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintBottom_toTopOf="@+id/passwordText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/passwordText"
         android:layout_width="314dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"
@@ -123,6 +123,7 @@
         android:layout_height="51dp"
         android:layout_marginBottom="12dp"
         android:backgroundTint="#fc0b03"
+        android:onClick="createAccountButtonClicked"
         android:text="Create Account"
         app:layout_constraintBottom_toTopOf="@+id/ReturnLoginPageButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,6 +136,7 @@
         android:layout_height="52dp"
         android:layout_marginBottom="76dp"
         android:backgroundTint="#0a12f5"
+        android:onClick="returnLoginPageButtonClicked"
         android:text="Return Login Page"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -161,11 +163,11 @@
         android:layout_height="48dp"
         android:backgroundTint="#cfcfe3"
         android:contentDescription="VisibilityButton"
-        app:layout_constraintBottom_toBottomOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordText"
+        app:layout_constraintEnd_toEndOf="@+id/passwordText"
         app:layout_constraintHorizontal_bias="0.973"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toTopOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/passwordText"
+        app:layout_constraintTop_toTopOf="@+id/passwordText"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/baseline_visibility_off_24" />
 

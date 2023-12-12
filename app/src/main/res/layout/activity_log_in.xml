@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/emailText"
         android:layout_width="304dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="@+id/ContainerWhite" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/passwordText"
         android:layout_width="307dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="@+id/ContainerWhite"
         app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="@+id/ContainerWhite"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
     <Button
         android:id="@+id/loginButton"
@@ -63,6 +63,7 @@
         android:layout_height="48dp"
         android:layout_marginBottom="108dp"
         android:backgroundTint="#db0202"
+        android:onClick="loginButtonClicked"
         android:text="Login"
         android:textSize="18sp"
         app:cornerRadius="20dp"
@@ -72,10 +73,11 @@
         app:layout_constraintStart_toStartOf="@+id/ContainerWhite" />
 
     <TextView
-        android:id="@+id/signupText"
+        android:id="@+id/createAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="92dp"
+        android:onClick="createAccountClicked"
         android:padding="8dp"
         android:text="Create an account"
         android:textAlignment="center"
@@ -96,7 +98,7 @@
         android:textColor="@color/black"
         android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="@+id/ContainerWhite"
-        app:layout_constraintEnd_toStartOf="@+id/signupText"
+        app:layout_constraintEnd_toStartOf="@+id/createAccount"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/ContainerWhite"
         app:layout_constraintTop_toBottomOf="@+id/loginButton"
@@ -107,6 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="28dp"
+        android:onClick="forgetPasswordClicked"
         android:padding="8dp"
         android:text="Forgot Password? "
         android:textAlignment="center"
@@ -114,13 +117,14 @@
         android:textSize="9sp"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="@+id/ContainerWhite"
-        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText"
         app:layout_constraintVertical_bias="0.571" />
 
     <TextView
         android:id="@+id/RememberMeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="rememberMeClicked"
         android:padding="8dp"
         android:text="Remember me! "
         android:textAlignment="center"
@@ -130,7 +134,7 @@
         app:layout_constraintEnd_toStartOf="@+id/forgetPasswordText"
         app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText"
         app:layout_constraintVertical_bias="0.571" />
 
     <ImageView
