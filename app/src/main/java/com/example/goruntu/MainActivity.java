@@ -3,8 +3,9 @@ package com.example.goruntu;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.semrekavgaci.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
             return false;
         });
+    }
+    public void addNoteClicked(View view){
+        Intent intent = new Intent(this, AddNoteActivity.class);
+
+        startActivity(intent);
     }
 
 }

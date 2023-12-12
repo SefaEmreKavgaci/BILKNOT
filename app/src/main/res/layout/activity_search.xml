@@ -133,6 +133,7 @@
         android:layout_height="0dp"
         android:backgroundTint="#fcf881"
         android:contentDescription="Return button"
+        android:onClick="searchToHome"
         android:src="@drawable/baseline_arrow_back_24"
         app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
         app:layout_constraintEnd_toStartOf="@+id/viewHorizontalSoldaki"
@@ -173,8 +174,9 @@
         android:layout_height="49dp"
         android:background="@color/searchColor"
         android:contentDescription="Cross button"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        android:onClick="crossButtonClicked"
 
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toStartOf="@+id/searchButton"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toEndOf="@+id/searchNote"

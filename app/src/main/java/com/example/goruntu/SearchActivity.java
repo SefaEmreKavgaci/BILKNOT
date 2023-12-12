@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.semrekavgaci.myapplication.R;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -15,14 +16,14 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.search);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
             if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 return true;
             } else if (itemId == R.id.search) {
-                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
 
                 return true;
             } else if (itemId == R.id.settings) {
@@ -37,5 +38,10 @@ public class SearchActivity extends AppCompatActivity {
 
             return false;
         });
+    }
+    public void searchToHome(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+
+        startActivity(intent);
     }
 }

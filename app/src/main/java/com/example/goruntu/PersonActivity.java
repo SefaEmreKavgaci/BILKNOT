@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.semrekavgaci.myapplication.R;
 
 public class PersonActivity extends AppCompatActivity {
 
@@ -15,11 +15,12 @@ public class PersonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.personal);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
             if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 return true;
             } else if (itemId == R.id.search) {
                 startActivity(new Intent(getApplicationContext(), SearchActivity.class));
@@ -30,7 +31,6 @@ public class PersonActivity extends AppCompatActivity {
 
                 return true;
             } else if (itemId == R.id.personal) {
-                startActivity(new Intent(getApplicationContext(), PersonActivity.class));
 
                 return true;
             }
@@ -38,4 +38,25 @@ public class PersonActivity extends AppCompatActivity {
             return false;
         });
     }
+    public void plannerButtonClicked(View view){
+        Intent intent = new Intent(this, PlannerActivity.class);
+
+        startActivity(intent);
+    }
+    public void myNotesClicked(View view){
+        Intent intent = new Intent(this, MyNotesActivity.class);
+
+        startActivity(intent);
+    }
+    public void savedButtonClicked(View view){
+        Intent intent = new Intent(this, SavedNotesActivity.class);
+
+        startActivity(intent);
+    }
+    public void personToHome(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+
+        startActivity(intent);
+    }
+
 }

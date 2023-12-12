@@ -133,6 +133,7 @@
         android:layout_height="0dp"
         android:backgroundTint="#fcf881"
         android:contentDescription="Return button"
+        android:onClick="toPerson"
         android:src="@drawable/baseline_arrow_back_24"
         app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
         app:layout_constraintEnd_toStartOf="@+id/viewHorizontalSoldaki"

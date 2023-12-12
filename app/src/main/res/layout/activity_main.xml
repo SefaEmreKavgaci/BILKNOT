@@ -147,6 +147,7 @@
         android:layout_height="60dp"
         android:backgroundTint="@color/homeColor"
         android:contentDescription="Add note button"
+        android:onClick="addNoteClicked"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.891"
