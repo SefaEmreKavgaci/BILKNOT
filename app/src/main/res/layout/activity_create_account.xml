@@ -48,7 +48,7 @@
         app:layout_constraintTop_toTopOf="@+id/BluePlace" />
 
     <EditText
-        android:id="@+id/emailText"
+        android:id="@+id/emailTextCA"
         android:layout_width="314dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"
@@ -59,13 +59,13 @@
         android:padding="8dp"
         android:textColor="@color/black"
         android:textColorHighlight="@color/cardview_dark_background"
-        app:layout_constraintBottom_toTopOf="@+id/username"
+        app:layout_constraintBottom_toTopOf="@+id/usernameCA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/usernameCA"
         android:layout_width="314dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"
@@ -76,13 +76,13 @@
         android:padding="8dp"
         android:textColor="@color/black"
         android:textColorHighlight="@color/cardview_dark_background"
-        app:layout_constraintBottom_toTopOf="@+id/passwordText"
+        app:layout_constraintBottom_toTopOf="@+id/passwordTextCA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/passwordText"
+        android:id="@+id/passwordTextCA"
         android:layout_width="314dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"
@@ -94,13 +94,13 @@
         android:padding="8dp"
         android:textColor="@color/black"
         android:textColorHighlight="@color/cardview_dark_background"
-        app:layout_constraintBottom_toTopOf="@+id/PasswordAgain"
+        app:layout_constraintBottom_toTopOf="@+id/PasswordAgainCA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/PasswordAgain"
+        android:id="@+id/PasswordAgainCA"
         android:layout_width="314dp"
         android:layout_height="48dp"
         android:layout_marginBottom="32dp"
@@ -149,11 +149,11 @@
         android:layout_height="48dp"
         android:backgroundTint="#cfcfe3"
         android:contentDescription="VisibilityButton2"
-        app:layout_constraintBottom_toBottomOf="@+id/PasswordAgain"
-        app:layout_constraintEnd_toEndOf="@+id/PasswordAgain"
+        app:layout_constraintBottom_toBottomOf="@+id/PasswordAgainCA"
+        app:layout_constraintEnd_toEndOf="@+id/PasswordAgainCA"
         app:layout_constraintHorizontal_bias="0.973"
-        app:layout_constraintStart_toStartOf="@+id/PasswordAgain"
-        app:layout_constraintTop_toTopOf="@+id/PasswordAgain"
+        app:layout_constraintStart_toStartOf="@+id/PasswordAgainCA"
+        app:layout_constraintTop_toTopOf="@+id/PasswordAgainCA"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/baseline_visibility_off_24" />
 
@@ -163,11 +163,11 @@
         android:layout_height="48dp"
         android:backgroundTint="#cfcfe3"
         android:contentDescription="VisibilityButton"
-        app:layout_constraintBottom_toBottomOf="@+id/passwordText"
-        app:layout_constraintEnd_toEndOf="@+id/passwordText"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordTextCA"
+        app:layout_constraintEnd_toEndOf="@+id/passwordTextCA"
         app:layout_constraintHorizontal_bias="0.973"
-        app:layout_constraintStart_toStartOf="@+id/passwordText"
-        app:layout_constraintTop_toTopOf="@+id/passwordText"
+        app:layout_constraintStart_toStartOf="@+id/passwordTextCA"
+        app:layout_constraintTop_toTopOf="@+id/passwordTextCA"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/baseline_visibility_off_24" />
 

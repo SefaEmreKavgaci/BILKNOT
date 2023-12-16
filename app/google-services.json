@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "357631043093",
-    "project_id": "bilknot-77a9b",
-    "storage_bucket": "bilknot-77a9b.appspot.com"
+    "project_number": "538630459284",
+    "project_id": "bilknot-987a0",
+    "storage_bucket": "bilknot-987a0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:357631043093:android:e21b2708cbf7b36e40901c",
+        "mobilesdk_app_id": "1:538630459284:android:410887d9768ded66ac0981",
         "android_client_info": {
-          "package_name": "com.example.goruntu"
+          "package_name": "com.semrekavgaci.bilknot"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDUQfC13Po3tBD5-Yo0g9MEt9cqs_SuMKg"
+          "current_key": "AIzaSyBqwdfOrrKM_9t_r7wSbWkaXtn3ahhgMcw"
         }
       ],
       "services": {

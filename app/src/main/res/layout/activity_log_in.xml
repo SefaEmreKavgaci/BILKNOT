@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/emailText"
+        android:id="@+id/emailTextCA"
         android:layout_width="304dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="@+id/ContainerWhite" />
 
     <EditText
-        android:id="@+id/passwordText"
+        android:id="@+id/passwordTextCA"
         android:layout_width="307dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="@+id/ContainerWhite"
         app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="@+id/ContainerWhite"
-        app:layout_constraintTop_toBottomOf="@+id/emailText" />
+        app:layout_constraintTop_toBottomOf="@+id/emailTextCA" />
 
     <Button
         android:id="@+id/loginButton"
@@ -117,7 +117,7 @@
         android:textSize="9sp"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="@+id/ContainerWhite"
-        app:layout_constraintTop_toBottomOf="@+id/passwordText"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextCA"
         app:layout_constraintVertical_bias="0.571" />
 
     <TextView
@@ -134,7 +134,7 @@
         app:layout_constraintEnd_toStartOf="@+id/forgetPasswordText"
         app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordText"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextCA"
         app:layout_constraintVertical_bias="0.571" />
 
     <ImageView

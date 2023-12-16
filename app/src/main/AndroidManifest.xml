@@ -10,22 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GORUNTU"
+        android:theme="@style/Theme.BILKNOT"
         tools:targetApi="31">
         <activity
-            android:name=".CreateAccountActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ForgotPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LogInActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddNoteActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SaveNoteActivity"
+            android:name=".ViewTheClickedNoteActivity"
             android:exported="false" />
         <activity
             android:name=".ViewSharedNotesActivity"
@@ -34,19 +22,34 @@
             android:name=".ViewSavedNotesActivity"
             android:exported="false" />
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SaveNoteActivity"
+            android:exported="false" />
+        <activity
             android:name=".SavedNotesActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewTheClickedNoteActivity"
+            android:name=".PlannerActivity"
             android:exported="false" />
         <activity
-            android:name=".MyNotesActivity"
+            android:name=".PersonActivity"
             android:exported="false" />
         <activity
             android:name=".NotesOfTheDayActivity"
             android:exported="false" />
         <activity
-            android:name=".PlannerActivity"
+            android:name=".MyNotesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateAccountActivity"
             android:exported="false" />
         <activity
             android:name=".ChangeProfileInfoActivity"
@@ -55,16 +58,16 @@
             android:name=".ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".CalendarViewHolder"
             android:exported="false" />
         <activity
-            android:name=".PersonActivity"
+            android:name=".CalendarAdapter"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".AddNoteActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".LogInActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
