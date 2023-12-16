@@ -1,7 +1,11 @@
 package com.semrekavgaci.bilknot;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,21 +18,51 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.semrekavgaci.bilknot.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
+    private FirebaseAuth auth;
+    private FirebaseFirestore firebaseFirestore;
+    ArrayList<Item> itemArrayList;
+    ItemAdapter itemAdapter;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
-        FirebaseApp.initializeApp(this);
+        auth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
+        itemArrayList = new ArrayList<>();
+
+        getData();
+
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        itemAdapter = new ItemAdapter(itemArrayList);
+
+        binding.recyclerView.setAdapter(itemAdapter);
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.home);
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
@@ -49,6 +83,43 @@ public class MainActivity extends AppCompatActivity {
             }
 
             return false;
+        });
+
+        getData();
+    }
+
+    public void getData(){
+        CollectionReference collectionReference = firebaseFirestore.collection("Posts");
+
+        collectionReference.orderBy("date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+
+                if (e != null) {
+                    Toast.makeText(MainActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                }
+
+                if (queryDocumentSnapshots != null) {
+
+                    for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()) {
+
+                        Map<String,Object> data = snapshot.getData();
+
+                        //Casting
+                        String description = (String) data.get("description");
+                        String userName = (String) data.get("userName");
+                        String downloadUrl = (String) data.get("downloadurl");
+
+                        Item item = new Item(userName,description,downloadUrl);
+
+                        itemArrayList.add(item);
+
+                    }
+
+                    itemAdapter.notifyDataSetChanged();
+                }
+
+            }
         });
     }
 

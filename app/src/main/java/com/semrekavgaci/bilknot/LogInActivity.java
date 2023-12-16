@@ -13,21 +13,28 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.semrekavgaci.bilknot.databinding.ActivityCreateAccountBinding;
+import com.semrekavgaci.bilknot.databinding.ActivityLogInBinding;
 
 public class LogInActivity extends AppCompatActivity {
     private  FirebaseAuth auth;
 
+    private ActivityLogInBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        FirebaseApp.initializeApp(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in);
+        binding = ActivityLogInBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
         auth = FirebaseAuth.getInstance();
     }
 
     public void loginButtonClicked(View view) {
-        String email = findViewById(R.id.emailTextCA).toString();
-        String password = findViewById(R.id.passwordTextCA).toString();
+        String email = binding.emailTextCA.getText().toString();
+        String password = binding.passwordTextCA.getText().toString();
 
         if(email.isEmpty() || password.isEmpty()){
             Toast.makeText(LogInActivity.this, "Email or password can not be empty", Toast.LENGTH_SHORT).show();
@@ -50,17 +57,13 @@ public class LogInActivity extends AppCompatActivity {
 
     public void forgetPasswordClicked(View view){
         Intent intent = new Intent(this, ForgotPasswordActivity.class);
-
         startActivity(intent);
-    }
-
-    public void rememberMeClicked(View view){
-        //Todo
+        finish();
     }
 
     public void createAccountClicked(View view){
         Intent intent = new Intent(this, CreateAccountActivity.class);
-
         startActivity(intent);
+        finish();
     }
 }

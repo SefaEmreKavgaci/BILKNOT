@@ -13,30 +13,34 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.semrekavgaci.bilknot.databinding.ActivityCreateAccountBinding;
 
 public class CreateAccountActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private String email;
     private String password;
+
+    private ActivityCreateAccountBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account);
+        binding = ActivityCreateAccountBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         auth = FirebaseAuth.getInstance();
 
-        FirebaseApp.initializeApp(this);
     }
 
     public void createAccountButtonClicked(View view){
-        String emailText = findViewById(R.id.emailTextCA).toString();
-        String passwordText = findViewById(R.id.passwordTextCA).toString();
+        String emailText = binding.emailTextCA.getText().toString();
+        String passwordText = binding.passwordTextCA.getText().toString();
         // String conPasText = binding.conpas.getText().toString();
         if(!(emailText.equals("")) && !(passwordText.equals("")) ){
             auth.createUserWithEmailAndPassword(emailText,passwordText).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
-                    Intent intent = new Intent(CreateAccountActivity.this, LogInActivity.class);
+                    Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }

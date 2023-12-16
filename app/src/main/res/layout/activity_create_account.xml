@@ -51,7 +51,7 @@
         android:id="@+id/emailTextCA"
         android:layout_width="314dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/custom_edittext"
         android:backgroundTint="#cfcfe3"
         android:drawablePadding="8dp"
@@ -59,33 +59,15 @@
         android:padding="8dp"
         android:textColor="@color/black"
         android:textColorHighlight="@color/cardview_dark_background"
-        app:layout_constraintBottom_toTopOf="@+id/usernameCA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.525"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/usernameCA"
-        android:layout_width="314dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/custom_edittext"
-        android:backgroundTint="#cfcfe3"
-        android:drawablePadding="8dp"
-        android:hint="Username"
-        android:padding="8dp"
-        android:textColor="@color/black"
-        android:textColorHighlight="@color/cardview_dark_background"
-        app:layout_constraintBottom_toTopOf="@+id/passwordTextCA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BluePlace" />
 
     <EditText
         android:id="@+id/passwordTextCA"
         android:layout_width="314dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="32dp"
         android:background="@drawable/custom_edittext"
         android:backgroundTint="#cfcfe3"
         android:drawablePadding="8dp"
@@ -97,13 +79,14 @@
         app:layout_constraintBottom_toTopOf="@+id/PasswordAgainCA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailTextCA" />
 
     <EditText
         android:id="@+id/PasswordAgainCA"
         android:layout_width="314dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="52dp"
         android:background="@drawable/custom_edittext"
         android:backgroundTint="#cfcfe3"
         android:drawablePadding="8dp"

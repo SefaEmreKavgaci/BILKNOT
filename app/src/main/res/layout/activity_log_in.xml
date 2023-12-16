@@ -120,23 +120,6 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordTextCA"
         app:layout_constraintVertical_bias="0.571" />
 
-    <TextView
-        android:id="@+id/RememberMeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="rememberMeClicked"
-        android:padding="8dp"
-        android:text="Remember me! "
-        android:textAlignment="center"
-        android:textColor="#2734f2"
-        android:textSize="9sp"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
-        app:layout_constraintEnd_toStartOf="@+id/forgetPasswordText"
-        app:layout_constraintHorizontal_bias="0.271"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTextCA"
-        app:layout_constraintVertical_bias="0.571" />
-
     <ImageView
         android:id="@+id/BilkentLogo"
         android:layout_width="169dp"

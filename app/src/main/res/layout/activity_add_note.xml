@@ -142,13 +142,13 @@
         app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
+    <EditText
         android:id="@+id/NameHere"
         android:layout_width="139dp"
         android:layout_height="31dp"
         android:background="#f2f5f5"
-        android:hint="Kullanici adi yazacak"
-        android:textColor="#fcfcfc"
+        android:hint="Name (opt.)"
+        android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,7 +157,7 @@
         app:layout_constraintTop_toBottomOf="@+id/viewHorizontalSoldaki"
         app:layout_constraintVertical_bias="0.073" />
 
-    <TextView
+    <EditText
         android:id="@+id/DescriptionHere"
         android:layout_width="258dp"
         android:layout_height="59dp"
@@ -165,7 +165,7 @@
         android:background="#f2f5f5"
         android:hint="Description here"
         android:paddingTop="15dp"
-        android:textColor="#fcfcfc"
+        android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -181,6 +181,7 @@
         android:layout_marginTop="6dp"
         android:backgroundTint="#fcd25d"
         android:contentDescription="PNG file will be added here"
+        android:onClick="selectImage"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
@@ -194,7 +195,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:hint="Add your files in png form"
+        android:hint="Add your files in jpg form"
         app:layout_constraintBottom_toTopOf="@+id/NoteWillBeAdded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
@@ -207,6 +208,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#ff644d"
+        android:onClick="okButton"
         android:text="OK"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
