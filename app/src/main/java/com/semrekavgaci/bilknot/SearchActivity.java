@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,7 +19,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.semrekavgaci.bilknot.databinding.ActivityMainBinding;
 import com.semrekavgaci.bilknot.databinding.ActivitySearchBinding;
 
 import java.util.ArrayList;
@@ -86,8 +84,6 @@ public class SearchActivity extends AppCompatActivity {
     public void getData(){
         CollectionReference collectionReference = firebaseFirestore.collection("Items");
         if(!isDateAscending){
-
-
             collectionReference.orderBy("date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
                 @Override
                 public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
@@ -161,8 +157,49 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void searchingButton(View view){
+        itemArrayList.clear();
 
+        String searchedWord = binding.searchNote.getText().toString();
+
+        CollectionReference collectionReference = firebaseFirestore.collection("Items");
+
+        if(isDateAscending){
+            collectionReference.orderBy("date", Query.Direction.DESCENDING);
+        }
+        else{
+            collectionReference.orderBy("date", Query.Direction.ASCENDING);
+        }
+
+        collectionReference.whereEqualTo("description", searchedWord).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+
+                if (e != null) {
+                    Toast.makeText(SearchActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                }
+
+                if (queryDocumentSnapshots != null) {
+
+                    for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()) {
+
+                        Map<String,Object> data = snapshot.getData();
+
+                        String description = (String) data.get("description");
+                        String userName = (String) data.get("userName");
+                        String downloadUrl = (String) data.get("downloadurl");
+                        Timestamp date = (Timestamp) data.get("date");
+
+                        Item item = new Item(userName,description,downloadUrl, date);
+
+                        itemArrayList.add(item);
+
+                    }
+                    itemAdapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
+
     public void searchToHome(View view){
         Intent intent = new Intent(this, MainActivity.class);
 

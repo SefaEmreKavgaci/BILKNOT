@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/searchColor">
+
+
+    <TextView
+        android:background="@color/white"
+        android:id="@+id/userNameText"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="7dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:text="username text"
+        android:layout_margin="10dp"/>
+
+    <ImageView
+        android:id="@+id/recyclerview_row_imageview"
+        android:layout_width="250dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:background="@color/white"
+        android:id="@+id/descriptionText"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="7dp"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:text="Description"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/likeButton"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:text="Like" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="Unsave" />
+
+</LinearLayout>

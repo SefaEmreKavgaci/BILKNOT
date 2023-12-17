@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#faa09b"
-    tools:context=".SaveNoteActivity">
+    tools:context=".AddNoteActivity">
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -133,6 +133,7 @@
         android:layout_height="0dp"
         android:backgroundTint="#fcf881"
         android:contentDescription="Return button"
+        android:onClick="toHome"
         android:src="@drawable/baseline_arrow_back_24"
         app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
         app:layout_constraintEnd_toStartOf="@+id/viewHorizontalSoldaki"
@@ -140,5 +141,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
         app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/NameHere"
+        android:layout_width="139dp"
+        android:layout_height="31dp"
+        android:background="#f2f5f5"
+        android:hint="Name (opt.)"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewHorizontalSoldaki"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <EditText
+        android:id="@+id/DescriptionHere"
+        android:layout_width="258dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="6dp"
+        android:background="#f2f5f5"
+        android:hint="Description here"
+        android:paddingTop="15dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewHorizontalSoldaki"
+        app:layout_constraintVertical_bias="0.196" />
+
+    <ImageButton
+        android:id="@+id/NoteWillBeAdded"
+        android:layout_width="309dp"
+        android:layout_height="176dp"
+        android:layout_marginTop="6dp"
+        android:backgroundTint="#fcd25d"
+        android:contentDescription="PNG file will be added here"
+        android:onClick="selectImage"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DescriptionHere"
+        app:layout_constraintVertical_bias="0.333"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <TextView
+        android:id="@+id/AddFileInPNG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:hint="Add your files in jpg form"
+        app:layout_constraintBottom_toTopOf="@+id/NoteWillBeAdded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DescriptionHere"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <Button
+        android:id="@+id/OKButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ff644d"
+        android:onClick="okButton"
+        android:text="OK"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NoteWillBeAdded"
+        app:layout_constraintVertical_bias="0.407" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
