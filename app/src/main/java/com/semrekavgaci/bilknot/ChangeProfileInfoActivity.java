@@ -1,19 +1,66 @@
 package com.semrekavgaci.bilknot;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.semrekavgaci.bilknot.databinding.ActivityAddNoteBinding;
+import com.semrekavgaci.bilknot.databinding.ActivityChangeProfileInfoBinding;
+
+import java.util.HashMap;
+import java.util.UUID;
 
 public class ChangeProfileInfoActivity extends AppCompatActivity {
+
+    private ActivityChangeProfileInfoBinding binding;
+    ActivityResultLauncher<Intent> activityResultLauncher;
+    ActivityResultLauncher<String> permissionLauncher;
+
+    private FirebaseStorage firebaseStorage;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firebaseFirestore;
+
+    private StorageReference storageReference;
+    Uri imageData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_profile_info);
+
+        registerLauncher();
+
+        binding = ActivityChangeProfileInfoBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.settings);
@@ -41,6 +88,86 @@ public class ChangeProfileInfoActivity extends AppCompatActivity {
             return false;
         });
     }
+
+    public void changePhotoButton(View view){
+        if (imageData != null) {
+
+            UUID uuid = UUID.randomUUID();
+            final String imageName = "images/" + uuid + ".jpg";
+
+            storageReference.child(imageName).putFile(imageData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    StorageReference newReference = FirebaseStorage.getInstance().getReference(imageName);
+                    newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override public void onSuccess(Uri uri) {
+
+                            String downloadUrl = uri.toString();
+
+                            HashMap<String, Object> postData = new HashMap<>();
+
+                            postData.put("downloadurl",downloadUrl);
+                            postData.put("date", FieldValue.serverTimestamp());
+
+                            firebaseFirestore.collection(FirebaseAuth.getInstance().getCurrentUser().getEmail() + "photo").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Intent intent = new Intent(ChangeProfileInfoActivity.this, SettingsActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(ChangeProfileInfoActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                                } });
+                        }
+                    });
+
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(ChangeProfileInfoActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                }
+            });
+
+        }
+    }
+
+    public void selectImage(View view){
+        permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
+    }
+
+    public void registerLauncher() {
+        activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            Intent intentFromResult = result.getData();
+                            if (intentFromResult != null) {
+                                imageData = intentFromResult.getData();
+                                binding.profilePhotoWillBeAdded.setImageURI(imageData);
+                            }
+
+                        }
+                    }
+                });
+
+        permissionLauncher =
+                registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
+                    @Override
+                    public void onActivityResult(Boolean result) {
+                        Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        activityResultLauncher.launch(intentToGallery);
+                    }
+                });
+    }
+
     public void toSettings(View view){
         Intent intent = new Intent(this, SettingsActivity.class);
 

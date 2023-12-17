@@ -19,6 +19,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private String email;
     private String password;
+    private String userName;
 
     private ActivityCreateAccountBinding binding;
     @Override
@@ -36,7 +37,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         String emailText = binding.emailTextCA.getText().toString();
         String passwordText = binding.passwordTextCA.getText().toString();
         // String conPasText = binding.conpas.getText().toString();
-        if(!(emailText.equals("")) && !(passwordText.equals("")) ){
+        if(!(emailText.equals("")) && !(passwordText.equals(""))){
             auth.createUserWithEmailAndPassword(emailText,passwordText).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
                 public void onSuccess(AuthResult authResult) {
