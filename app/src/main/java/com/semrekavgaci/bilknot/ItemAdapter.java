@@ -1,7 +1,9 @@
 package com.semrekavgaci.bilknot;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,10 +24,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
     class ItemHolder extends RecyclerView.ViewHolder {
         RecyclerRowBinding recyclerRowBinding;
 
+        Button likeButton;
+
         public ItemHolder(@NonNull RecyclerRowBinding recyclerRowBinding) {
             super(recyclerRowBinding.getRoot());
             this.recyclerRowBinding = recyclerRowBinding;
-
+            likeButton = recyclerRowBinding.likeButton;
         }
     }
 
@@ -42,6 +46,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
         holder.recyclerRowBinding.descriptionText.setText(itemArrayList.get(position).description);
         Picasso.get().load(itemArrayList.get(position).downloadUrl).into(holder.recyclerRowBinding.recyclerviewRowImageview);
     }
+
 
     @Override
     public int getItemCount() {

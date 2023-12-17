@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -50,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         itemArrayList = new ArrayList<>();
-
-        getData();
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getData(){
-        CollectionReference collectionReference = firebaseFirestore.collection("Posts");
+        CollectionReference collectionReference = firebaseFirestore.collection("Items");
 
         collectionReference.orderBy("date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -105,12 +104,12 @@ public class MainActivity extends AppCompatActivity {
 
                         Map<String,Object> data = snapshot.getData();
 
-                        //Casting
                         String description = (String) data.get("description");
                         String userName = (String) data.get("userName");
                         String downloadUrl = (String) data.get("downloadurl");
+                        Timestamp date = (Timestamp) data.get("date");
 
-                        Item item = new Item(userName,description,downloadUrl);
+                        Item item = new Item(userName,description,downloadUrl, date);
 
                         itemArrayList.add(item);
 

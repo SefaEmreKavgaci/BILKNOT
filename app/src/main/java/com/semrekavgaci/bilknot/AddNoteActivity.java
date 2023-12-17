@@ -22,6 +22,7 @@ import android.view.View;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -70,6 +71,31 @@ public class AddNoteActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         registerLauncher();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.home) {
+                return true;
+            } else if (itemId == R.id.search) {
+                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+
+                return true;
+            } else if (itemId == R.id.settings) {
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+
+                return true;
+            } else if (itemId == R.id.personal) {
+                startActivity(new Intent(getApplicationContext(), PersonActivity.class));
+
+                return true;
+            }
+
+            return false;
+        });
     }
     public void toHome(View view){
         Intent intent = new Intent(this, MainActivity.class);
@@ -93,8 +119,6 @@ public class AddNoteActivity extends AppCompatActivity {
 
                             String downloadUrl = uri.toString();
 
-                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-
                             String userName = binding.NameHere.getText().toString();
 
                             String description = binding.DescriptionHere.getText().toString();
@@ -106,7 +130,7 @@ public class AddNoteActivity extends AppCompatActivity {
                             postData.put("description",description);
                             postData.put("date", FieldValue.serverTimestamp());
 
-                            firebaseFirestore.collection("Posts").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            firebaseFirestore.collection("Items").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
@@ -134,21 +158,7 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     public void selectImage(View view){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                Snackbar.make(view,"Permission needed for gallery", Snackbar.LENGTH_INDEFINITE).setAction("Give Permission", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
-                    }
-                }).show();
-            } else {
-                permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
-            }
-        } else {
-            Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            activityResultLauncher.launch(intentToGallery);
-        }
+        permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
     public void registerLauncher() {
@@ -172,15 +182,9 @@ public class AddNoteActivity extends AppCompatActivity {
                 registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
                     @Override
                     public void onActivityResult(Boolean result) {
-                        if(result) {
-                            Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                            activityResultLauncher.launch(intentToGallery);
-
-                        } else {
-                            Toast.makeText(AddNoteActivity.this,"Permisson needed!", Toast.LENGTH_LONG).show();
-                        }
+                        Intent intentToGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        activityResultLauncher.launch(intentToGallery);
                     }
-
                 });
     }
 }

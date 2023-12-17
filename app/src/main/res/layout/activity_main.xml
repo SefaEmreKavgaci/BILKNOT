@@ -141,6 +141,17 @@
         app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
         app:layout_constraintVertical_bias="0.0" />
 
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/recyclerView"
+        android:layout_width="394dp"
+        android:layout_height="320dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/morBoyama"
+        app:layout_constraintVertical_bias="0.161" />
+
     <ImageButton
         android:id="@+id/AddNoteButton"
         android:layout_width="60dp"
@@ -155,17 +166,6 @@
         app:layout_constraintTop_toBottomOf="@+id/viewHorizontal"
         app:layout_constraintVertical_bias="0.969"
         app:srcCompat="@drawable/baseline_add_circle_24" />
-
-    <androidx.recyclerview.widget.RecyclerView
-
-        android:id="@+id/recyclerView"
-        android:layout_width="383dp"
-        android:layout_height="327dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/morBoyama"
-        app:layout_constraintVertical_bias="0.181" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
