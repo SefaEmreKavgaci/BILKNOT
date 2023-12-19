@@ -26,7 +26,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.semrekavgaci.bilknot.databinding.ActivityAddNoteBinding;
 import com.semrekavgaci.bilknot.databinding.ActivityChangeProfileInfoBinding;
 
 import java.util.HashMap;

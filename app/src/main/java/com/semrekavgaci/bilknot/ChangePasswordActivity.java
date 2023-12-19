@@ -76,29 +76,42 @@ public class ChangePasswordActivity extends AppCompatActivity {
     }
 
     public void changePasswordButton(View view){
-        FirebaseUser user = auth.getCurrentUser();
+        String oldPassword = oldPasswordHere.getText().toString();
+        String newPassword = newPasswordHere.getText().toString();
+        String newPasswordAgain = newPasswordHereAgain.getText().toString();
 
-        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), binding.oldPasswordHere.getText().toString());
+        if (oldPassword.isEmpty() || newPassword.isEmpty() || newPasswordAgain.isEmpty()) {
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!newPassword.equals(newPasswordAgain)) {
+            Toast.makeText(this, "New passwords do not match", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        FirebaseUser user = auth.getCurrentUser();
+        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), oldPassword);
 
         user.reauthenticate(authCredential).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                user.updatePassword(newPasswordHere.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-
+                        Toast.makeText(ChangePasswordActivity.this, "Password updated successfully", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        Toast.makeText(ChangePasswordActivity.this, "Failed to update password: " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ChangePasswordActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(ChangePasswordActivity.this, "Reauthentication failed: " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -97,24 +97,6 @@
         app:layout_constraintTop_toTopOf="@+id/tumEkran"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/bilknotYazisi"
-        android:layout_width="317dp"
-        android:layout_height="58dp"
-        android:background="#313bf5"
-        android:paddingStart="100dp"
-        android:paddingTop="10dp"
-        android:text="BILKNOT"
-        android:textColor="#fcfcfc"
-        android:textSize="30sp"
-
-        app:layout_constraintBottom_toBottomOf="@+id/tumEkran"
-        app:layout_constraintEnd_toEndOf="@+id/ustAcikMavi"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="@+id/ustAcikMavi"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.062" />
-
     <ImageView
         android:id="@+id/profilePhoto"
         android:layout_width="0dp"
@@ -217,6 +199,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="320dp"
+        android:layout_height="105dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="@+id/ustAcikMavi"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="@+id/ustAcikMavi"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029"
+        app:srcCompat="@drawable/logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

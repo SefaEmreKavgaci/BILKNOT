@@ -18,22 +18,10 @@
             android:name=".AddMyNotesActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewTheClickedNoteActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ViewSharedNotesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ViewSavedNotesActivity"
-            android:exported="false" />
-        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".SearchActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SaveNoteActivity"
             android:exported="false" />
         <activity
             android:name=".SavedNotesActivity"

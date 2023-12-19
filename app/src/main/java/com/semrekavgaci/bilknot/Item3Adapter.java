@@ -2,7 +2,6 @@ package com.semrekavgaci.bilknot;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +15,15 @@ public class Item3Adapter extends RecyclerView.Adapter<Item3Adapter.Item3Holder>
 
     private ArrayList<Item> itemArrayList;
 
+    private OnUnsaveButtonClickListener unsaveButtonClickListener;
+
+    public interface OnUnsaveButtonClickListener {
+        void onUnsaveButtonClicked(int position);
+    }
+    public void setOnUnsaveButtonClickListener(OnUnsaveButtonClickListener listener) {
+        this.unsaveButtonClickListener = listener;
+    }
+
     public Item3Adapter(ArrayList<Item> itemArrayList){
         this.itemArrayList = itemArrayList;
     }
@@ -26,6 +34,12 @@ public class Item3Adapter extends RecyclerView.Adapter<Item3Adapter.Item3Holder>
         public Item3Holder(@NonNull RecyclerRow3Binding recyclerRow3Binding) {
             super(recyclerRow3Binding.getRoot());
             this.recyclerRow3Binding = recyclerRow3Binding;
+
+            recyclerRow3Binding.saveButton.setOnClickListener(v -> {
+                if (unsaveButtonClickListener != null) {
+                    unsaveButtonClickListener.onUnsaveButtonClicked(getAdapterPosition());
+                }
+            });
         }
     }
 

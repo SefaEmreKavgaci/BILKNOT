@@ -10,16 +10,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.semrekavgaci.bilknot.databinding.ActivityCreateAccountBinding;
 
 public class CreateAccountActivity extends AppCompatActivity {
     private FirebaseAuth auth;
-    private String email;
-    private String password;
-    private String userName;
 
     private ActivityCreateAccountBinding binding;
     @Override

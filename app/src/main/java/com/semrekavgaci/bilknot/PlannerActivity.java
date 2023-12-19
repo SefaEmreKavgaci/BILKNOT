@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -36,6 +35,31 @@ public class PlannerActivity extends AppCompatActivity implements CalendarAdapte
             selectedDate = LocalDate.now();
         }
         setMonthView();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.personal);
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.home) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            } else if (itemId == R.id.search) {
+                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+
+                return true;
+            } else if (itemId == R.id.settings) {
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+
+                return true;
+            } else if (itemId == R.id.personal) {
+                startActivity(new Intent(getApplicationContext(), PersonActivity.class));
+
+                return true;
+            }
+
+            return false;
+        });
     }
 
     private void initWidgets()

@@ -3,10 +3,8 @@ package com.semrekavgaci.bilknot;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,13 +20,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.semrekavgaci.bilknot.databinding.ActivityMainBinding;
 import com.semrekavgaci.bilknot.databinding.ActivitySavedNotesBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class SavedNotesActivity extends AppCompatActivity implements Item4Adapter.OnUnsaveButtonClickListener{
 
@@ -109,7 +104,7 @@ public class SavedNotesActivity extends AppCompatActivity implements Item4Adapte
     private void removeItemFromFirestore(Item itemId) {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference savedItemsRef = db.collection("SavedItems");
+        CollectionReference savedItemsRef = db.collection(auth.getCurrentUser().getEmail() + " Saved");
 
         // Find the document with the specified item ID and delete it
         savedItemsRef.whereEqualTo("description", itemId.description)
@@ -126,17 +121,8 @@ public class SavedNotesActivity extends AppCompatActivity implements Item4Adapte
                 });
     }
 
-    private void removeItemFromRecyclerView(int position) {
-        // Remove the item from the list
-        savedItemsList.remove(position);
-
-        // Notify the adapter that the dataset has changed
-        //savedItemAdapter.notifyItemRemoved(position);
-
-    }
-
     public void getData(){
-        CollectionReference collectionReference = firebaseFirestore.collection("SavedItems");
+        CollectionReference collectionReference = firebaseFirestore.collection(auth.getCurrentUser().getEmail() + " Saved");
 
         collectionReference.orderBy("date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -168,6 +154,4 @@ public class SavedNotesActivity extends AppCompatActivity implements Item4Adapte
             }
         });
     }
-
-
 }

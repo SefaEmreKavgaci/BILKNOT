@@ -1,26 +1,17 @@
 package com.semrekavgaci.bilknot;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.Timestamp;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -31,7 +22,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.semrekavgaci.bilknot.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements ItemAdapter.OnSavedButtonClickListener {
@@ -95,23 +85,17 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.OnSav
 
 
     public void onSavedButtonClicked(int position) {
-        // Handle the saved button click event
         Item selectedItem = itemArrayList.get(position);
 
-        // Save the item data to Firebase Firestore
         saveItemToFirestore(selectedItem);
 
-
-        // You can also notify the user that the item is saved
         Toast.makeText(this, "Item saved!", Toast.LENGTH_SHORT).show();
     }
 
     private void saveItemToFirestore(Item item) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        CollectionReference savedItemsRef = db.collection("SavedItems");
+        CollectionReference savedItemsRef = db.collection(auth.getCurrentUser().getEmail() + " Saved");
 
-        // You can use the document ID or a generated ID for each saved item
-        // In this example, I'm using a generated ID
         savedItemsRef.add(item);
     }
 

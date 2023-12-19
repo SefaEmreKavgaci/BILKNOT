@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,13 +21,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.semrekavgaci.bilknot.databinding.ActivityMainBinding;
 import com.semrekavgaci.bilknot.databinding.ActivityMyNotesBinding;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-public class MyNotesActivity extends AppCompatActivity {
+public class MyNotesActivity extends AppCompatActivity implements Item3Adapter.OnUnsaveButtonClickListener{
 
     private FirebaseAuth auth;
     private FirebaseFirestore firebaseFirestore;
@@ -52,6 +53,8 @@ public class MyNotesActivity extends AppCompatActivity {
         item3Adapter = new Item3Adapter(itemArrayList);
 
         binding.recyclerView.setAdapter(item3Adapter);
+
+        item3Adapter.setOnUnsaveButtonClickListener(this);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.personal);
@@ -80,6 +83,36 @@ public class MyNotesActivity extends AppCompatActivity {
         });
 
         getData();
+    }
+
+    public void onUnsaveButtonClicked(int position) {
+
+        Item selectedItem = itemArrayList.get(position);
+
+        removeItemFromFirestore(selectedItem);
+        itemArrayList.clear();
+
+        // You can also notify the user that the item is unsaved
+        Toast.makeText(this, "Item unsaved!", Toast.LENGTH_SHORT).show();
+    }
+    private void removeItemFromFirestore(Item itemId) {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference savedItemsRef = db.collection(auth.getCurrentUser().getEmail());
+
+        // Find the document with the specified item ID and delete it
+        savedItemsRef.whereEqualTo("description", itemId.description)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (DocumentSnapshot document : task.getResult()) {
+                            document.getReference().delete();
+                        }
+                    } else {
+                        // Handle errors
+                        Log.e("SavedNotesActivity", "Error getting documents: ", task.getException());
+                    }
+                });
     }
 
     public void getData(){

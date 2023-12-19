@@ -126,32 +126,4 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
-        android:id="@+id/visibilityButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:backgroundTint="#cfcfe3"
-        android:contentDescription="VisibilityButton2"
-        app:layout_constraintBottom_toBottomOf="@+id/PasswordAgainCA"
-        app:layout_constraintEnd_toEndOf="@+id/PasswordAgainCA"
-        app:layout_constraintHorizontal_bias="0.973"
-        app:layout_constraintStart_toStartOf="@+id/PasswordAgainCA"
-        app:layout_constraintTop_toTopOf="@+id/PasswordAgainCA"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/baseline_visibility_off_24" />
-
-    <ImageButton
-        android:id="@+id/visibilityButton"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:backgroundTint="#cfcfe3"
-        android:contentDescription="VisibilityButton"
-        app:layout_constraintBottom_toBottomOf="@+id/passwordTextCA"
-        app:layout_constraintEnd_toEndOf="@+id/passwordTextCA"
-        app:layout_constraintHorizontal_bias="0.973"
-        app:layout_constraintStart_toStartOf="@+id/passwordTextCA"
-        app:layout_constraintTop_toTopOf="@+id/passwordTextCA"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/baseline_visibility_off_24" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
