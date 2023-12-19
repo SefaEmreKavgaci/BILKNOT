@@ -38,13 +38,6 @@
         android:layout_margin="10dp"/>
 
     <Button
-        android:id="@+id/likeButton"
-        android:layout_width="140dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:text="Like" />
-
-    <Button
         android:id="@+id/saveButton"
         android:layout_width="140dp"
         android:layout_height="48dp"

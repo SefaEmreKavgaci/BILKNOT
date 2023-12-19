@@ -33,7 +33,21 @@ import java.util.HashMap;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
 
+    private OnSavedButtonClickListener savedButtonClickListener;
+
+
+
+
     private ArrayList<Item> itemArrayList;
+
+    public interface OnSavedButtonClickListener {
+        void onSavedButtonClicked(int position);
+    }
+
+
+    public void setOnSavedButtonClickListener(OnSavedButtonClickListener listener) {
+        this.savedButtonClickListener = listener;
+    }
 
     public ItemAdapter(ArrayList<Item> itemArrayList){
 
@@ -47,8 +61,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
             super(recyclerRowBinding.getRoot());
             this.recyclerRowBinding = recyclerRowBinding;
 
+            recyclerRowBinding.saveButton.setOnClickListener(v -> {
+                if (savedButtonClickListener != null) {
+                    savedButtonClickListener.onSavedButtonClicked(getAdapterPosition());
+                }
+            });
+
         }
+
     }
+
 
     @NonNull
     @Override
@@ -62,7 +84,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
         holder.recyclerRowBinding.userNameText.setText(itemArrayList.get(position).userName);
         holder.recyclerRowBinding.descriptionText.setText(itemArrayList.get(position).description);
         Picasso.get().load(itemArrayList.get(position).downloadUrl).into(holder.recyclerRowBinding.recyclerviewRowImageview);
+        holder.recyclerRowBinding.saveButton.setOnClickListener(v -> {
+            if (savedButtonClickListener != null) {
+                savedButtonClickListener.onSavedButtonClicked(position);
+            }
+        });
     }
+
 
 
     @Override

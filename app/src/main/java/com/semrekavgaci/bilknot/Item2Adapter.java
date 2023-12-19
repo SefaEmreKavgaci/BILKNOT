@@ -26,7 +26,17 @@ import java.util.HashMap;
 
 public class Item2Adapter extends RecyclerView.Adapter<Item2Adapter.Item2Holder> {
 
+    private OnSavedButtonClickListener savedButtonClickListener;
+
     private ArrayList<Item> itemArrayList;
+
+    public interface OnSavedButtonClickListener {
+        void onSavedButtonClicked(int position);
+    }
+
+    public void setOnSavedButtonClickListener(OnSavedButtonClickListener listener) {
+        this.savedButtonClickListener = listener;
+    }
     public Item2Adapter(ArrayList<Item> itemArrayList){
 
         this.itemArrayList = itemArrayList;
@@ -38,6 +48,12 @@ public class Item2Adapter extends RecyclerView.Adapter<Item2Adapter.Item2Holder>
         public Item2Holder(@NonNull RecyclerRow2Binding recyclerRow2Binding) {
             super(recyclerRow2Binding.getRoot());
             this.recyclerRow2Binding = recyclerRow2Binding;
+
+            recyclerRow2Binding.saveButton.setOnClickListener(v -> {
+                if (savedButtonClickListener != null) {
+                    savedButtonClickListener.onSavedButtonClicked(getAdapterPosition());
+                }
+            });
         }
     }
 
@@ -51,10 +67,15 @@ public class Item2Adapter extends RecyclerView.Adapter<Item2Adapter.Item2Holder>
 
 
     @Override
-    public void onBindViewHolder(@NonNull Item2Holder holder, int position) {
+    public void onBindViewHolder(@NonNull Item2Adapter.Item2Holder holder, int position) {
         holder.recyclerRow2Binding.userNameText.setText(itemArrayList.get(position).userName);
         holder.recyclerRow2Binding.descriptionText.setText(itemArrayList.get(position).description);
         Picasso.get().load(itemArrayList.get(position).downloadUrl).into(holder.recyclerRow2Binding.recyclerviewRowImageview);
+        holder.recyclerRow2Binding.saveButton.setOnClickListener(v -> {
+            if (savedButtonClickListener != null) {
+                savedButtonClickListener.onSavedButtonClicked(position);
+            }
+        });
     }
 
     @Override

@@ -22,9 +22,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.semrekavgaci.bilknot.databinding.ActivitySearchBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements Item2Adapter.OnSavedButtonClickListener{
 
     private FirebaseAuth auth;
     private FirebaseFirestore firebaseFirestore;
@@ -48,9 +49,11 @@ public class SearchActivity extends AppCompatActivity {
 
         itemArrayList = new ArrayList<>();
 
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         itemAdapter = new Item2Adapter(itemArrayList);
+
+        itemAdapter.setOnSavedButtonClickListener(this);
+
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         binding.recyclerView.setAdapter(itemAdapter);
 
@@ -81,6 +84,25 @@ public class SearchActivity extends AppCompatActivity {
         getData();
     }
 
+    public void onSavedButtonClicked(int position) {
+        // Handle the saved button click event
+        Item selectedItem = itemArrayList.get(position);
+
+        // Save the item data to Firebase Firestore
+        saveItemToFirestore(selectedItem);
+
+        // You can also notify the user that the item is saved
+        Toast.makeText(this, "Item saved!", Toast.LENGTH_SHORT).show();
+    }
+    private void saveItemToFirestore(Item item) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference savedItemsRef = db.collection("SavedItems");
+
+        // You can use the document ID or a generated ID for each saved item
+        // In this example, I'm using a generated ID
+        savedItemsRef.add(item);
+    }
+
     public void getData(){
         CollectionReference collectionReference = firebaseFirestore.collection("Items");
         if(!isDateAscending){
@@ -103,10 +125,9 @@ public class SearchActivity extends AppCompatActivity {
                             String downloadUrl = (String) data.get("downloadurl");
                             Timestamp date = (Timestamp) data.get("date");
 
-                            Item item = new Item(userName,description,downloadUrl, date);
 
+                            Item item = new Item(userName, description, downloadUrl,date);
                             itemArrayList.add(item);
-
                         }
                         itemAdapter.notifyDataSetChanged();
                     }
@@ -133,8 +154,8 @@ public class SearchActivity extends AppCompatActivity {
                             String downloadUrl = (String) data.get("downloadurl");
                             Timestamp date = (Timestamp) data.get("date");
 
-                            Item item = new Item(userName,description,downloadUrl, date);
 
+                            Item item = new Item(userName, description, downloadUrl,date);
                             itemArrayList.add(item);
 
                         }
@@ -189,8 +210,8 @@ public class SearchActivity extends AppCompatActivity {
                         String downloadUrl = (String) data.get("downloadurl");
                         Timestamp date = (Timestamp) data.get("date");
 
-                        Item item = new Item(userName,description,downloadUrl, date);
 
+                        Item item = new Item(userName, description, downloadUrl,date);
                         itemArrayList.add(item);
 
                     }
