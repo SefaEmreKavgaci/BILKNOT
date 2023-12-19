@@ -43,11 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-    public void buttonChangeProInfoClicked(View view){
-        Intent intent = new Intent(this, ChangeProfileInfoActivity.class);
 
-        startActivity(intent);
-    }
     public void buttonLogoutClicked(View view){
         Intent intent = new Intent(this, LogInActivity.class);
 

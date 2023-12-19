@@ -181,7 +181,7 @@ public class SearchActivity extends AppCompatActivity implements Item2Adapter.On
             collectionReference.orderBy("date", Query.Direction.ASCENDING);
         }
 
-        collectionReference.whereEqualTo("description", searchedWord).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        collectionReference.whereEqualTo("userName", searchedWord).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 

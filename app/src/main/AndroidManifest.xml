@@ -45,9 +45,6 @@
             android:name=".CreateAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".ChangeProfileInfoActivity"
-            android:exported="false" />
-        <activity
             android:name=".ChangePasswordActivity"
             android:exported="false" />
         <activity

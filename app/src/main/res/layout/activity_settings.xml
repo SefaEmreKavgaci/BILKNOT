@@ -51,10 +51,10 @@
         android:text="CHANGE PASSWORD"
         app:layout_constraintBottom_toBottomOf="@+id/tumEkran"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewHorizontal"
-        app:layout_constraintVertical_bias="0.103" />
+        app:layout_constraintVertical_bias="0.225" />
 
     <View
         android:id="@+id/viewHorizontal"
@@ -107,33 +107,6 @@
         app:layout_constraintTop_toTopOf="@+id/tumEkran"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/profilePhoto"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/viewHorizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/viewVertical"
-        app:layout_constraintTop_toBottomOf="@+id/ustAcikMavi"
-        app:layout_constraintVertical_bias="0.0"
-        tools:src="@tools:sample/avatars" />
-
-    <Button
-        android:id="@+id/buttonChangeProfile"
-
-        android:layout_width="240dp"
-        android:layout_height="90dp"
-        android:backgroundTint="#e7ed40"
-        android:onClick="buttonChangeProInfoClicked"
-        android:text="CHANGE PROFILE INFO"
-        app:layout_constraintBottom_toBottomOf="@+id/tumEkran"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHorizontal"
-        app:layout_constraintVertical_bias="0.408" />
-
     <Button
         android:id="@+id/buttonLogout"
         android:layout_width="247dp"
@@ -146,7 +119,7 @@
         app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewHorizontal"
-        app:layout_constraintVertical_bias="0.717" />
+        app:layout_constraintVertical_bias="0.591" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -174,5 +147,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.029"
         app:srcCompat="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="70dp"
+        android:layout_height="84dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.248"
+        app:srcCompat="@drawable/book" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
