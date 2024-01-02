@@ -97,7 +97,6 @@ public class SavedNotesActivity extends AppCompatActivity implements Item4Adapte
         removeItemFromFirestore(selectedItem);
         savedItemsList.clear();
 
-        // You can also notify the user that the item is unsaved
         Toast.makeText(this, "Item unsaved!", Toast.LENGTH_SHORT).show();
     }
 
@@ -106,7 +105,6 @@ public class SavedNotesActivity extends AppCompatActivity implements Item4Adapte
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference savedItemsRef = db.collection(auth.getCurrentUser().getEmail() + " Saved");
 
-        // Find the document with the specified item ID and delete it
         savedItemsRef.whereEqualTo("description", itemId.description)
                 .get()
                 .addOnCompleteListener(task -> {

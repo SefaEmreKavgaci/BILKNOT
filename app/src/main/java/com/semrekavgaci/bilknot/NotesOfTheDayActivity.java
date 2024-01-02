@@ -33,7 +33,6 @@ public class NotesOfTheDayActivity extends AppCompatActivity {
                 selectedDate = LocalDate.parse(selectedDateString);
             }
 
-            // Format the date to display in the TextView
             DateTimeFormatter formatter = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");

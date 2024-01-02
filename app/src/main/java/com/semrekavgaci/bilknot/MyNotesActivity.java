@@ -92,7 +92,6 @@ public class MyNotesActivity extends AppCompatActivity implements Item3Adapter.O
         removeItemFromFirestore(selectedItem);
         itemArrayList.clear();
 
-        // You can also notify the user that the item is unsaved
         Toast.makeText(this, "Item unsaved!", Toast.LENGTH_SHORT).show();
     }
     private void removeItemFromFirestore(Item itemId) {
@@ -100,7 +99,6 @@ public class MyNotesActivity extends AppCompatActivity implements Item3Adapter.O
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference savedItemsRef = db.collection(auth.getCurrentUser().getEmail());
 
-        // Find the document with the specified item ID and delete it
         savedItemsRef.whereEqualTo("description", itemId.description)
                 .get()
                 .addOnCompleteListener(task -> {
